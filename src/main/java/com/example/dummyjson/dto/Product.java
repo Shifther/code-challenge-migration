@@ -1,9 +1,8 @@
 package com.example.dummyjson.dto;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 public class Product {
 
@@ -53,5 +52,9 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Object get(int i) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

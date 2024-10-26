@@ -1,19 +1,26 @@
 package com.example.dummyjson.config;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.reactive.function.client.WebClient;
 
-@RunWith(MockitoJUnitRunner.class)
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+@SpringBootTest
 public class RestTemplateConfigTest {
 
-    @InjectMocks
-    RestTemplateConfig restTemplateConfig;
+	@Autowired
+    private WebClientConfig webClientConfig;
 
     @Test
-    public void testRestTemplateConfig(){
-        Assert.assertNotNull(this.restTemplateConfig.restTemplate());
+    public void testWebClientConfig(){
+        // Testando se o WebClient.Builder está configurado corretamente
+    	WebClient.Builder builder = webClientConfig.webClientBuilder();
+        assertNotNull(builder);
+        
+        // Testando se o WebClient pode ser construído a partir do builder
+        WebClient webClient = builder.build();
+        assertNotNull(webClient);
     }
 }
